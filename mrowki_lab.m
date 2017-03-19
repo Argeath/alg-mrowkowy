@@ -3,13 +3,13 @@
  
 clear                           % wyczyszczenie pamieci roboczej
 close all                       % zamkniecie wszystkich okien z rysunkami
-nazwa_pliku = 'labirynt4.bmp'
+nazwa_pliku = 'labirynt3.bmp'
 sledzenie = 0;                  % czy rysowac po kazdej trasie aktualny stan feromonu
 liczba_tras = 1000;             % liczba tras wyznaczanych przez mrowki
 liczba_krokow_max = 400;        % maksymalna liczba krokow, by zabezpieczyc sie przed petla
 
-n = 0.3;         % wspolczynnik nacisku selekcyjnego (im wiekszy, tym wieksze prawd. wyboru kierunku z wieksza iloscia feromonu)
-par = 0.3;       % wspolczynik parowania feromonu (zmniejszenie feromonu po kazdym cyklu)
+n = 0.45;         % wspolczynnik nacisku selekcyjnego (im wiekszy, tym wieksze prawd. wyboru kierunku z wieksza iloscia feromonu)
+par = 0.1;       % wspolczynik parowania feromonu (zmniejszenie feromonu po kazdym cyklu)
  
 t = imread(nazwa_pliku);        % wczytanie labiryntu 
 fig1 = figure;                  % otwarcie okna rysunkowego    
@@ -104,7 +104,7 @@ for trasa=1:liczba_tras
  
         % ............... TUTAJ NALEZY ZMODYFIKOWAC TABLICE FEROMONU
         for i=1:length(sciezka(:,1))
-            f_swiezy(sciezka(i,1),sciezka(i,2)) = 1/(length(sciezka(:,1))^4);     % na razie stala wartosc
+            f_swiezy(sciezka(i,1),sciezka(i,2)) = 1/(5 + length(sciezka(:,1))^4);
         end 
  
  
